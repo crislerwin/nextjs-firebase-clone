@@ -101,7 +101,7 @@ function Navigator(props: NavigatorProps) {
         <ListItem
           className={clsx(classes.firebase, classes.item, classes.itemCategory)}
         >
-          Paperbase
+          Firebase
         </ListItem>
         <ListItem className={clsx(classes.item, classes.itemCategory)}>
           <ListItemIcon className={classes.itemIcon}>
@@ -111,9 +111,7 @@ function Navigator(props: NavigatorProps) {
             classes={{
               primary: classes.itemPrimary,
             }}
-          >
-            Project Overview
-          </ListItemText>
+          ></ListItemText>
         </ListItem>
         {categories.map(({ id, children }) => (
           <React.Fragment key={id}>

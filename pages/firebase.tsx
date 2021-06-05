@@ -6,13 +6,10 @@ import {
   withStyles,
   WithStyles,
 } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Hidden from "@material-ui/core/Hidden";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import Navigator from "./src/Components/Navigator";
-import Content from "./src/Components/Content";
-import Header from "./src/Components/Header";
+import { CssBaseline, Hidden, Typography, Link } from "@material-ui/core";
+import Navigator from "./src/Components/Firebase/Navigator";
+import Content from "./src/Components/Firebase/Content";
+import Header from "./src/Components/Firebase/Header";
 
 function Copyright() {
   return (
@@ -27,7 +24,7 @@ function Copyright() {
   );
 }
 
-let theme = createMuiTheme({
+let theme: any = createMuiTheme({
   palette: {
     primary: {
       light: "#63ccff",
