@@ -1,146 +1,210 @@
 import React from "react";
 import {
-  AppBar,
-  Hidden,
-  Typography,
-  Avatar,
-  Button,
-  Grid,
-  Link,
-  Tab,
-  Tabs,
-  Toolbar,
-  Tooltip,
+  createMuiTheme,
   createStyles,
-  Theme,
+  ThemeProvider,
   withStyles,
   WithStyles,
-  IconButton,
-} from "@material-ui/core";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import MenuIcon from "@material-ui/icons/Menu";
-import HelpIcon from "@material-ui/icons/Help";
+} from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Hidden from "@material-ui/core/Hidden";
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
+import Navigator from "./src/Components/Navigator";
+import Content from "./src/Components/Content";
+import Header from "./src/Components/Header";
 
-const lightColor = "rgba(255, 255, 255, 0.7)";
-
-const styles = (theme: Theme) =>
-  createStyles({
-    secondaryBar: {
-      zIndex: 0,
-    },
-    menuButton: {
-      marginLeft: -theme.spacing(1),
-    },
-    iconButtonAvatar: {
-      padding: 4,
-    },
-    link: {
-      textDecoration: "none",
-      color: lightColor,
-      "&:hover": {
-        color: theme.palette.common.white,
-      },
-    },
-    button: {
-      borderColor: lightColor,
-    },
-  });
-
-interface HeaderProps extends WithStyles<typeof styles> {
-  onDrawerToggle: () => void;
-}
-
-function Header(props: HeaderProps) {
-  const { classes, onDrawerToggle } = props;
-
+function Copyright() {
   return (
-    <React.Fragment>
-      <AppBar color="primary" position="sticky" elevation={0}>
-        <Toolbar>
-          <Grid container spacing={1} alignItems="center">
-            <Hidden smUp>
-              <Grid item>
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={onDrawerToggle}
-                  className={classes.menuButton}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </Grid>
-            </Hidden>
-            <Grid item xs />
-            <Grid item>
-              <Link className={classes.link} href="#" variant="body2">
-                Go to docs
-              </Link>
-            </Grid>
-            <Grid item>
-              <Tooltip title="Alerts • No alerts">
-                <IconButton color="inherit">
-                  <NotificationsIcon />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-            <Grid item>
-              <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
-              </IconButton>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Toolbar>
-          <Grid container alignItems="center" spacing={1}>
-            <Grid item xs>
-              <Typography color="inherit" variant="h5" component="h1">
-                Authentication
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Button
-                className={classes.button}
-                variant="outlined"
-                color="inherit"
-                size="small"
-              >
-                Web setup
-              </Button>
-            </Grid>
-            <Grid item>
-              <Tooltip title="Help">
-                <IconButton color="inherit">
-                  <HelpIcon />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      <AppBar
-        component="div"
-        className={classes.secondaryBar}
-        color="primary"
-        position="static"
-        elevation={0}
-      >
-        <Tabs value={0} textColor="inherit">
-          <Tab textColor="inherit" label="Users" />
-          <Tab textColor="inherit" label="Sign-in method" />
-          <Tab textColor="inherit" label="Templates" />
-          <Tab textColor="inherit" label="Usage" />
-        </Tabs>
-      </AppBar>
-    </React.Fragment>
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   );
 }
 
-export default withStyles(styles)(Header);
+let theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: "#63ccff",
+      main: "#009be5",
+      dark: "#006db3",
+    },
+  },
+  typography: {
+    h5: {
+      fontWeight: 500,
+      fontSize: 26,
+      letterSpacing: 0.5,
+    },
+  },
+  shape: {
+    borderRadius: 8,
+  },
+  props: {
+    MuiTab: {
+      disableRipple: true,
+    },
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 48,
+    },
+  },
+});
+
+theme = {
+  ...theme,
+  overrides: {
+    MuiDrawer: {
+      paper: {
+        backgroundColor: "#18202c",
+      },
+    },
+    MuiButton: {
+      label: {
+        textTransform: "none",
+      },
+      contained: {
+        boxShadow: "none",
+        "&:active": {
+          boxShadow: "none",
+        },
+      },
+    },
+    MuiTabs: {
+      root: {
+        marginLeft: theme.spacing(1),
+      },
+      indicator: {
+        height: 3,
+        borderTopLeftRadius: 3,
+        borderTopRightRadius: 3,
+        backgroundColor: theme.palette.common.white,
+      },
+    },
+    MuiTab: {
+      root: {
+        textTransform: "none",
+        margin: "0 16px",
+        minWidth: 0,
+        padding: 0,
+        [theme.breakpoints.up("md")]: {
+          padding: 0,
+          minWidth: 0,
+        },
+      },
+    },
+    MuiIconButton: {
+      root: {
+        padding: theme.spacing(1),
+      },
+    },
+    MuiTooltip: {
+      tooltip: {
+        borderRadius: 4,
+      },
+    },
+    MuiDivider: {
+      root: {
+        backgroundColor: "#404854",
+      },
+    },
+    MuiListItemText: {
+      primary: {
+        fontWeight: theme.typography.fontWeightMedium,
+      },
+    },
+    MuiListItemIcon: {
+      root: {
+        color: "inherit",
+        marginRight: 0,
+        "& svg": {
+          fontSize: 20,
+        },
+      },
+    },
+    MuiAvatar: {
+      root: {
+        width: 32,
+        height: 32,
+      },
+    },
+  },
+};
+
+const drawerWidth = 256;
+
+const styles = createStyles({
+  root: {
+    display: "flex",
+    minHeight: "100vh",
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
+  },
+  app: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "column",
+  },
+  main: {
+    flex: 1,
+    padding: theme.spacing(6, 4),
+    background: "#eaeff1",
+  },
+  footer: {
+    padding: theme.spacing(2),
+    background: "#eaeff1",
+  },
+});
+
+export interface PaperbaseProps extends WithStyles<typeof styles> {}
+
+function Paperbase(props: PaperbaseProps) {
+  const { classes } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  return (
+    <ThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <CssBaseline />
+        <nav className={classes.drawer}>
+          <Hidden smUp implementation="js">
+            <Navigator
+              PaperProps={{ style: { width: drawerWidth } }}
+              variant="temporary"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+            />
+          </Hidden>
+          <Hidden xsDown implementation="css">
+            <Navigator PaperProps={{ style: { width: drawerWidth } }} />
+          </Hidden>
+        </nav>
+        <div className={classes.app}>
+          <Header onDrawerToggle={handleDrawerToggle} />
+          <main className={classes.main}>
+            <Content />
+          </main>
+          <footer className={classes.footer}>
+            <Copyright />
+          </footer>
+        </div>
+      </div>
+    </ThemeProvider>
+  );
+}
+
+export default withStyles(styles)(Paperbase);
