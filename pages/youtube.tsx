@@ -1,6 +1,11 @@
 import React from "react";
-import Layout from "./src/Components/Youtube/Layout/index";
+// import { Box, Grid } from "@material-ui/core";
+import Layout from "././src/Components/Youtube/Layout";
+//import VideoCard from "././src/Components/Youtube/VideoCard";
+//import { getVideos } from 'src/database/getVideos';
 
-export default function YouTube() {
+function Home() {
   return <Layout title="YouTube"></Layout>;
 }
+
+export default Home;

@@ -1,8 +1,4 @@
-interface Themes {
-  LIGHT: string;
-  DARK: string;
-}
-export const THEMES: Themes = {
+export const THEMES = {
   LIGHT: "LIGHT",
   DARK: "DARK",
 };

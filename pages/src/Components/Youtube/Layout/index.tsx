@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 import Head from "next/head";
+import NavBar from "./NavBar";
+import TopBar from "./TopBar";
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.light,
@@ -44,6 +46,8 @@ export default function App({ children, title = "Crisler Wintler" }: any) {
           />
         </Head>
         <div className={classes.root}>
+          <TopBar />
+          <NavBar />
           <div className={classes.wrapper}>
             <div className={classes.contentContainer}>
               <div className={classes.content}>{children}</div>
