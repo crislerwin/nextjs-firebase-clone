@@ -85,7 +85,10 @@ function Header(props: HeaderProps) {
             </Grid>
             <Grid item>
               <IconButton color="inherit" className={classes.iconButtonAvatar}>
-                <Avatar src="/static/images/avatar/1.jpg" alt="My Avatar" />
+                <Avatar
+                  src="http://github.com/crislerwin.png"
+                  alt="My Avatar"
+                />
               </IconButton>
             </Grid>
           </Grid>
